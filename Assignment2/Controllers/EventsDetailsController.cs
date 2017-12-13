@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using olympicEvents.Models;
 
 namespace Assignment2.Controllers
-{ 
+{
+    
     public class EventsDetailsController : Controller
     {
         private OlympicEventsModel db = new OlympicEventsModel();
@@ -35,7 +36,7 @@ namespace Assignment2.Controllers
             }
             return View(eventsDetail);
         }
-
+        [Authorize (Roles ="user")]
         // GET: EventsDetails/Create
         public ActionResult Create()
         {
@@ -60,7 +61,7 @@ namespace Assignment2.Controllers
             ViewBag.eventID = new SelectList(db.Events, "eventID", "Name", eventsDetail.eventID);
             return View(eventsDetail);
         }
-
+        [Authorize(Roles = "user")]
         // GET: EventsDetails/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -93,7 +94,7 @@ namespace Assignment2.Controllers
             ViewBag.eventID = new SelectList(db.Events, "eventID", "Name", eventsDetail.eventID);
             return View(eventsDetail);
         }
-
+        [Authorize(Roles = "user")]
         // GET: EventsDetails/Delete/5
         public ActionResult Delete(int? id)
         {

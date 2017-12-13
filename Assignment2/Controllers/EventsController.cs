@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using olympicEvents.Models;
 
 namespace Assignment2.Controllers
-{  
+{
+  
     public class EventsController : Controller
     {
         private OlympicEventsModel db = new OlympicEventsModel();
@@ -36,6 +37,7 @@ namespace Assignment2.Controllers
         }
 
         // GET: Events/Create
+        [Authorize(Roles = "user")]
         public ActionResult Create()
         {
             return View();
@@ -57,7 +59,7 @@ namespace Assignment2.Controllers
 
             return View(@event);
         }
-
+        [Authorize(Roles = "user")]
         // GET: Events/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -88,7 +90,7 @@ namespace Assignment2.Controllers
             }
             return View(@event);
         }
-
+        [Authorize(Roles = "user")]
         // GET: Events/Delete/5
         public ActionResult Delete(int? id)
         {
